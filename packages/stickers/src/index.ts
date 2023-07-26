@@ -68,6 +68,7 @@ import * as anArtistsLegacyStickers from './an-artists-legacy';
 import * as tipsForThrowingAnOutdoorLuauStickers from './tips-for-throwing-an-outdoor-luau';
 
 export default {
+  ...youthStickers,
   ...beautyStickers,
   ...cookingStickers,
   ...doersGetMoreDoneStickers,
