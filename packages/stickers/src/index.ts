@@ -66,6 +66,7 @@ import * as allAboutCarsStickers from './all-about-cars';
 import * as sustainabilityTipsStickers from './sustainability-tips';
 import * as anArtistsLegacyStickers from './an-artists-legacy';
 import * as tipsForThrowingAnOutdoorLuauStickers from './tips-for-throwing-an-outdoor-luau';
+import * as youthStickers from './youth';
 
 export default {
   ...youthStickers,
