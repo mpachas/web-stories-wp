@@ -31,3 +31,29 @@ If you find any issues, please reach out by visiting the [support forum](https:/
 ## Contributing
 
 We'd love to accept your patches and contributions to this project. There are just a few small guidelines you need to follow. Please check out our [Contributing documentation](./CONTRIBUTING.md) and the [Getting Started](./docs/getting-started.md) guide.
+
+## Setup development environment
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+(echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> ~/.profile
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+sudo apt-get install build-essential
+
+brew install gcc
+brew install php
+
+wget https://raw.githubusercontent.com/composer/getcomposer.org/main/web/installer -O - -q | php -- --quiet
+sudo mv composer.phar /usr/local/bin/composer
+
+curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
+source ~/.bashrc
+nvm install
+
+composer install
+npm install
+
+curl -fsSL https://bun.sh/install | bash
+source ~/.bashrc
+
+npm run dev
+```

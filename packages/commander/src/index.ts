@@ -37,7 +37,7 @@ import {
 
 const PLUGIN_DIR = process.cwd();
 const PLUGIN_FILE = 'web-stories.php';
-const BUILD_DIR = 'build/web-stories';
+const BUILD_DIR = 'build/web-stories_modificado';
 
 const program = new Command();
 
