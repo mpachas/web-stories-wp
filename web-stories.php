@@ -9,9 +9,10 @@
  * Plugin URI: https://wp.stories.google/
  * Author: Google
  * Author URI: https://opensource.google.com/
- * Version: 1.42.0-alpha.0
+ * Version: 1.42.0-youth.1
  * Requires at least: 6.6
  * Requires PHP: 7.4
+ * Update URI: false
  * Text Domain: web-stories
  * License: Apache License 2.0
  * License URI: https://www.apache.org/licenses/LICENSE-2.0
@@ -40,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'WEBSTORIES_VERSION', '1.42.0-alpha.0' );
+define( 'WEBSTORIES_VERSION', '1.42.0-youth.1' );
 define( 'WEBSTORIES_DB_VERSION', '3.0.16' );
 define( 'WEBSTORIES_AMP_VERSION', '2.5.6-alpha' ); // Version of the AMP library included in the plugin.
 define( 'WEBSTORIES_PLUGIN_FILE', __FILE__ );
