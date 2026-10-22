@@ -15,7 +15,7 @@ Este repo es un fork de [GoogleForCreators/web-stories-wp](https://github.com/Go
 - Web Stories no tiene hooks ni filtros para añadir formas o stickers. Tampoco funcionó subir SVG con el experimento de SVG del plugin. La única vía es este fork.
 - **Formas.** Son máscaras rellenas: el editor permite cambiarles el color o usarlas para recortar imágenes. Sirven para manchas y siluetas, pero no para iconos de contorno, que saldrían como una silueta maciza.
 - **Stickers.** Son SVG con los colores fijados en el código. Para ofrecer varios colores habría que duplicar cada icono por color.
-- **Decisión.** En el plugin van solo las formas. Los iconos de contorno se copian desde el selector [SVG Explorer](https://svgs.opusdei.net/svg-explorer.html), que permite elegir el color.
+- **Decisión.** En el plugin van solo las formas. Los iconos de contorno se copian desde el selector [SVG Explorer](https://svgs.opusdei.org/svg-explorer.html), que permite elegir el color.
 - **La rama `new-svgs`** (julio de 2023) fue una primera prueba que nunca llegó a producción. Tenía 8 formas `FormaXX`, varias de ellas idénticas a `Youth-XX`, y dos stickers. Se conserva archivada con el tag `archive/new-svgs`.
 
 ## Regla de versiones
