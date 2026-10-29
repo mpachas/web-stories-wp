@@ -40,6 +40,10 @@ Si el fichero ya existe, sugiere sustituir esta sección por un import (`@<ruta>
   ```
   Los avisos de `str_starts_with` y `str_contains` son falsos positivos, porque WordPress trae polyfills.
 - **No ejecutes `npm audit fix`:** cambia el lock y puede romper el build. Las vulnerabilidades que reporta son del toolchain de desarrollo.
+- **Las stories son AMP y no admiten JavaScript propio.** Desde la 1.37.0, el plugin elimina cualquier `<script>` propio de las stories, sin avisar (`'sanitize_js_scripts' => true` en `includes/AMP/Sanitization.php`).
+  - La analítica tiene que ir con `<amp-analytics>`, enganchada a `web_stories_print_analytics`, que se dispara antes de `</amp-story>`.
+  - Las stories no llaman a `wp_head()`, así que `wp_enqueue_scripts` tampoco sirve.
+  - No lo "arregles" desactivando el sanitizer en el fork: las stories dejarían de ser AMP válido.
 
 ## Histórico de versiones
 

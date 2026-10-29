@@ -80,6 +80,7 @@ Después de rebasar:
 2. Compara `WEBSTORIES_DB_VERSION` con la versión desplegada. Si cambia, hay migraciones de base de datos y volver atrás exige restaurar la base de datos.
 3. Haz el build y el empaquetado.
 4. Antes de desplegar, abre en el editor una story que use formas `Youth-XX`.
+5. Revisa los cambios en `includes/AMP/Sanitization.php` y en los hooks `web_stories_*`. El sitio inyecta código en las stories desde fuera del plugin (por ejemplo, la analítica), y el sanitizer AMP puede eliminarlo sin dar ningún error.
 
 ## Despliegue
 
@@ -92,12 +93,14 @@ Después de rebasar:
    - En el editor, Insert → Shapes muestra las 20 `Youth-XX`.
    - Las stories que usan esas formas se abren y se guardan bien.
    - El front se ve correctamente.
+   - La analítica sigue llegando: en las DevTools de una story publicada, las peticiones de analítica salen y responden bien.
    - `wp-content/debug.log` no muestra errores nuevos.
 
 ## Historial
 
 - **Septiembre de 2023.** En producción se instala `release/1034.0`: upstream 1.34.0 más las formas `Youth-XX`, con la versión falsa 1034. Está archivada en la release `v1.34.0-youth-legacy`, con el zip tal como estaba en el servidor.
 - **Octubre de 2026.** Se rebasa sobre v1.42.0 para la migración a PHP 8.5 y se publica `1.42.0-youth.1`. `WEBSTORIES_DB_VERSION` es la misma (3.0.16), así que no hay migraciones de base de datos entre ambas.
+  - Efecto secundario: desde la 1.37.0, el plugin activa `sanitize_js_scripts` en `AMP_Script_Sanitizer` (upstream #13729) y elimina de las stories cualquier `<script>` propio. La analítica del sitio, que se inyectaba con `<script>` desde el child theme, dejó de funcionar. Se resolvió fuera del plugin, con `<amp-analytics>` en el hook `web_stories_print_analytics`.
 - Con PHP 8.5 solo quedan avisos `E_DEPRECATED` en dependencias empaquetadas, inofensivos:
   - `curl_close()`.
   - Parámetros implícitamente nullables en `amp-toolbox` y `php-css-parser`.
