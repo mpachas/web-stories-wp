@@ -82,6 +82,19 @@ Después de rebasar:
 4. Antes de desplegar, abre en el editor una story que use formas `Youth-XX`.
 5. Revisa los cambios en `includes/AMP/Sanitization.php` y en los hooks `web_stories_*`. El sitio inyecta código en las stories desde fuera del plugin (por ejemplo, la analítica), y el sanitizer AMP puede eliminarlo sin dar ningún error.
 
+## GitHub Actions
+
+El fork hereda los workflows de upstream en `.github/workflows/`. Los programados (con `schedule`) solo se ejecutan desde la rama por defecto, así que empezaron a lanzarse cuando la rama por defecto pasó a ser `youth-1.42`.
+
+- **Desactivados a mano (noviembre de 2026):** `Migrate Templates`, `Update Google Fonts`, `Update browserslist db`, `Update Product Schema` y `Scorecards supply-chain security`.
+  - Los cuatro primeros abren PRs automáticos con el token del bot de Google (`GOOGLEFORCREATORS_BOT_TOKEN`), que el fork no tiene, así que fallaban.
+  - Tampoco hacen falta: lo que actualizan llega con cada rebase sobre upstream.
+  - Scorecards publica una puntuación de seguridad del repo en OpenSSF, que no tiene sentido para un fork.
+- Desactivar un workflow es un ajuste del repo en GitHub, no un cambio en los ficheros. Por eso no da conflictos al rebasar y se mantiene aunque cambie la rama por defecto, porque va por workflow y no por rama.
+  - Para ver el estado: `gh workflow list --all`.
+  - Para reactivar uno: `gh workflow enable "<nombre>"`.
+- Los demás workflows (build, lint, tests, CodeQL, Storybook) solo se lanzan con pushes a `main` o `release/*`, o con PRs. Los de release solo se lanzan a mano. **Si se abre un PR en el fork, se lanzarán muchos tests de upstream**, y algunos fallarán por falta de secretos.
+
 ## Despliegue
 
 1. Haz copia de seguridad de la base de datos y de `wp-content`.

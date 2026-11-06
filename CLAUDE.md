@@ -34,6 +34,7 @@ Si el fichero ya existe, sugiere sustituir esta sección por un import (`@<ruta>
 - **Fallos de `gh`:**
   - `gh issue view` falla con un error de "Projects (classic)". Usa `gh api repos/mpachas/web-stories-wp/issues/...`.
   - `gh repo edit` también puede fallar. La rama por defecto se cambió desde la web.
+- **Cambiar la rama por defecto activa los workflows programados de upstream.** Fallan porque falta el token del bot de Google. Están desactivados con `gh workflow disable`; ver la sección "GitHub Actions" de `FORK.md`. Si en el futuro llegan correos de fallo de Actions, comprueba `gh workflow list --all`.
 - **Compatibilidad con una versión nueva de PHP:** usa PHPCompatibility en la rama `develop`, clonada de GitHub. La 9.3.5 que instala Composer no conoce PHP 8.1 o posterior. Ejemplo:
   ```
   phpcs --standard=PHPCompatibility --runtime-set testVersion 8.5 --extensions=php includes web-stories.php
